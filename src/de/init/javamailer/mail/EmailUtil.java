@@ -1,4 +1,4 @@
-package de.init.javamailer.util;
+package de.init.javamailer.mail;
 
 import java.util.Date;
 
@@ -7,6 +7,10 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
+import de.init.javamailer.util.HtmlGenerator;
+import de.init.javamailer.util.PropertiesLoader;
 
 public class EmailUtil {
 
@@ -32,7 +36,16 @@ public class EmailUtil {
 
 			msg.setSubject(subject, "UTF-8");
 
-			msg.setText(body, "UTF-8");
+			final HtmlGenerator htmlGenerator = new HtmlGenerator();
+
+			// Create a multipart message for inline image
+			final MimeMultipart content = new MimeMultipart("related");
+
+			content.addBodyPart(htmlGenerator.generateHTMLBodyPart());
+			content.addBodyPart(htmlGenerator.generateHTMLImagePart());
+
+			// Set the multipart message to the email message
+			msg.setContent(content);
 
 			msg.setSentDate(new Date());
 

@@ -7,7 +7,6 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 
 import de.init.javamailer.util.ContentHolder;
-import de.init.javamailer.util.EmailUtil;
 import de.init.javamailer.util.PropertiesLoader;
 
 public class TLSEmail {

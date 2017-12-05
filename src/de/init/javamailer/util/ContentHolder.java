@@ -3,7 +3,7 @@ package de.init.javamailer.util;
 public class ContentHolder {
 
 	private String subject;
-	private String body;
+	private String body = "";
 
 	public String getSubject() {
 		return subject;
