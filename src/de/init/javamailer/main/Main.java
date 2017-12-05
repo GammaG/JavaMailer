@@ -27,7 +27,7 @@ public class Main {
 
 		// set custom address to send from
 		if (args.length >= 4) {
-			PropertiesLoader.setSenderMail(args[4]);
+			PropertiesLoader.setSenderMail(args[3]);
 		} else {
 			PropertiesLoader.setSenderMail(username);
 		}
