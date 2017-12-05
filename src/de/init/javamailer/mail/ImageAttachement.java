@@ -1,4 +1,4 @@
-package main;
+package de.init.javamailer.mail;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
