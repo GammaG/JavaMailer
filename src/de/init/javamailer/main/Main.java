@@ -1,12 +1,16 @@
 package de.init.javamailer.main;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import de.init.javamailer.loader.FileReader;
 import de.init.javamailer.mail.TLSEmail;
 import de.init.javamailer.util.ContentHolder;
 import de.init.javamailer.util.PropertiesLoader;
 
 public class Main {
+
+	private static String path = "files/recipients.txt";
 
 	public static void main(final String[] args) {
 		String username = "";
@@ -28,14 +32,22 @@ public class Main {
 			PropertiesLoader.setSenderMail(username);
 		}
 
-		final TLSEmail tlsEmail = new TLSEmail(username, password, delay);
+		try {
 
-		// Tests
-		final ContentHolder contentHolder = createDummyContent();
-		final ArrayList<String> recipients = createDummyRecipients();
+			final TLSEmail tlsEmail = new TLSEmail(username, password, delay);
 
-		tlsEmail.setContent(contentHolder);
-		tlsEmail.sendmails(recipients);
+			// Test
+			final ContentHolder contentHolder = createDummyContent();
+
+			final ArrayList<String> recipients = new FileReader().readFile(path);
+			System.out.println(recipients.size() + " recipient(s) have been loaded.");
+
+			tlsEmail.setContent(contentHolder);
+			tlsEmail.sendmails(recipients);
+
+		} catch (final IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -43,12 +55,6 @@ public class Main {
 		System.out.println(
 				"Please give in valid server information for the smtp connection and delay in ms between requests.\nFormat should be like: username password delay");
 		System.exit(1);
-	}
-
-	private static ArrayList<String> createDummyRecipients() {
-		final ArrayList<String> receipients = new ArrayList<>();
-		receipients.add("marco.seidler@init.de");
-		return receipients;
 	}
 
 	private static ContentHolder createDummyContent() {
