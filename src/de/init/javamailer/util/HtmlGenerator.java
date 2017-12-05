@@ -7,7 +7,8 @@ import javax.mail.internet.MimeBodyPart;
 
 public class HtmlGenerator {
 
-	private final String cid = "radio_image";;
+	private final String cid = "radio_image";
+	private final String subject = "]init[RADIO kommt!";
 
 	private String generateHTMLBodyContent() {
 		return "<html><head>" + "<title>This is not usually displayed</title>" + "</head>\n"
@@ -34,4 +35,9 @@ public class HtmlGenerator {
 		imagePart.setDisposition(MimeBodyPart.INLINE);
 		return imagePart;
 	}
+
+	public String getSubject() {
+		return subject;
+	}
+
 }

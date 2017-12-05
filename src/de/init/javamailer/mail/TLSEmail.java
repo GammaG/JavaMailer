@@ -6,7 +6,6 @@ import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 
-import de.init.javamailer.util.ContentHolder;
 import de.init.javamailer.util.PropertiesLoader;
 
 public class TLSEmail {
@@ -14,16 +13,11 @@ public class TLSEmail {
 	private final String username;
 	private final String password;
 	private final int delay;
-	private ContentHolder contentHolder;
 
 	public TLSEmail(final String username, final String password, final int delay) {
 		this.username = username;
 		this.password = password;
 		this.delay = delay;
-	}
-
-	public void setContent(final ContentHolder contentHolder) {
-		this.contentHolder = contentHolder;
 	}
 
 	public void sendmails(final ArrayList<String> recipients) {
@@ -40,7 +34,7 @@ public class TLSEmail {
 		final Session session = Session.getInstance(PropertiesLoader.getProperties(), auth);
 		for (final String recipient : recipients) {
 			try {
-				EmailUtil.sendEmail(session, recipient, contentHolder.getSubject(), contentHolder.getBody());
+				EmailUtil.sendEmail(session, recipient);
 				if (delay > 0) {
 					Thread.sleep(delay);
 				}

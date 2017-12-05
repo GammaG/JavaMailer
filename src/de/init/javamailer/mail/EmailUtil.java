@@ -19,10 +19,8 @@ public class EmailUtil {
 	 * 
 	 * @param session
 	 * @param toEmail
-	 * @param subject
-	 * @param body
 	 */
-	public static void sendEmail(final Session session, final String toEmail, final String subject, final String body) {
+	public static void sendEmail(final Session session, final String toEmail) {
 		try {
 			final MimeMessage msg = new MimeMessage(session);
 			// set message headers
@@ -34,9 +32,9 @@ public class EmailUtil {
 
 			msg.setReplyTo(InternetAddress.parse(PropertiesLoader.getSenderMail(), false));
 
-			msg.setSubject(subject, "UTF-8");
-
 			final HtmlGenerator htmlGenerator = new HtmlGenerator();
+
+			msg.setSubject(htmlGenerator.getSubject(), "UTF-8");
 
 			// Create a multipart message for inline image
 			final MimeMultipart content = new MimeMultipart("related");
