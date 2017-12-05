@@ -20,6 +20,7 @@ public class TLSEmail {
 		this.delay = delay;
 	}
 
+	@SuppressWarnings("unused")
 	public void sendmails(final ArrayList<String> recipients) {
 
 		// create Authenticator object to pass in Session.getInstance argument
@@ -32,11 +33,15 @@ public class TLSEmail {
 		};
 
 		final Session session = Session.getInstance(PropertiesLoader.getProperties(), auth);
+		final int i = 1;
 		for (final String recipient : recipients) {
 			try {
 				EmailUtil.sendEmail(session, recipient);
 				if (delay > 0) {
 					Thread.sleep(delay);
+				}
+				if (i % 10 == 0) {
+					System.out.println(i + "/" + recipient.length());
 				}
 			} catch (final Exception e) {
 				System.out.println("Mail sending failed for: " + recipient);
