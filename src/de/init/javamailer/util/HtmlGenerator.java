@@ -10,12 +10,23 @@ public class HtmlGenerator {
 	private final String cid = "radio_image";
 	private final String subject = "]init[RADIO kommt!";
 
+	// private String generateHTMLBodyContent() {
+	// return "<html><head>" + "<title>This is not usually displayed</title>" +
+	// "</head>\n"
+	// + "<body><div><strong>Hi there!</strong></div>"
+	// + "<div>Sending HTML in email is so <em>cool!</em> </div>\n"
+	// + "<div>And here's an image: <img src=\"cid:" + cid + "\" /></div>n"
+	// + "<div>I hope you like it!</div></body></html>";
+	// }
+
 	private String generateHTMLBodyContent() {
-		return "<html><head>" + "<title>This is not usually displayed</title>" + "</head>\n"
-				+ "<body><div><strong>Hi there!</strong></div>"
-				+ "<div>Sending HTML in email is so <em>cool!</em> </div>\n"
-				+ "<div>And here's an image: <img src=\"cid:" + cid + "\" /></div>n"
-				+ "<div>I hope you like it!</div></body></html>";
+		return "<html><head>" + "<title>Radio</title>" + "</head>\n"
+				+ "<body><div><strong>&hellip; fast ist es soweit!</strong></div><br>"
+				+ "<div>Was als Feierabend-Schnapsidee begann, nimmt tats&auml;chlich Realit&auml;t an: ]init[ bekommt sein eigenes Netz-RADIO.</div>\n"
+				+ "<div>Das Programm ist von Euch/f&uuml;r Euch und damit f&uuml;r jeden etwas dabei ist, bef&uuml;llt den music_loader. Ihr k&ouml;nnt mp3&acute;s einstellen, ganze spotify-playlisten oder Ihr nennt Alben-Titel oder Filmmusike. Ums Rechtliche k&uuml;mmern wir uns.</div><br>\n"
+				+ "<div>..und hier geht`s zum  <a href=\"https://www.google.de\">music_loader</a></div><br>\n"
+				+ "<div><img src=\"cid:" + cid + "\" /></div><br>\n" + "<div>Viele Gr&uuml;&szlig;e</div><br>\n"
+				+ "<div>Harald&amp;Thoralf</div>\n" + "</body></html>";
 	}
 
 	public String getCid() {
