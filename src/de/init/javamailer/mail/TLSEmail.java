@@ -27,7 +27,7 @@ public class TLSEmail {
 		this.contentHolder = contentHolder;
 	}
 
-	public void sendmails(final ArrayList<String> receipients) {
+	public void sendmails(final ArrayList<String> recipients) {
 
 		// create Authenticator object to pass in Session.getInstance argument
 		final Authenticator auth = new Authenticator() {
@@ -39,14 +39,14 @@ public class TLSEmail {
 		};
 
 		final Session session = Session.getInstance(PropertiesLoader.getProperties(), auth);
-		for (final String receipient : receipients) {
+		for (final String recipient : recipients) {
 			try {
-				EmailUtil.sendEmail(session, receipient, contentHolder.getSubject(), contentHolder.getBody());
+				EmailUtil.sendEmail(session, recipient, contentHolder.getSubject(), contentHolder.getBody());
 				if (delay > 0) {
 					Thread.sleep(delay);
 				}
 			} catch (final Exception e) {
-				System.out.println("Mail sending failed for: " + receipient);
+				System.out.println("Mail sending failed for: " + recipient);
 				e.printStackTrace();
 			}
 		}

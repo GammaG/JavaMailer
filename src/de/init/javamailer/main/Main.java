@@ -32,20 +32,20 @@ public class Main {
 
 		// Tests
 		final ContentHolder contentHolder = createDummyContent();
-		final ArrayList<String> receipients = createDummyReceipients();
+		final ArrayList<String> recipients = createDummyRecipients();
 
 		tlsEmail.setContent(contentHolder);
-		tlsEmail.sendmails(receipients);
+		tlsEmail.sendmails(recipients);
 
 	}
 
 	private static void showErrorMessageAndExit() {
 		System.out.println(
-				"Please give in valid server information for the smtp connection and delay in ms between requests.\nFormat should be like: username password");
+				"Please give in valid server information for the smtp connection and delay in ms between requests.\nFormat should be like: username password delay");
 		System.exit(1);
 	}
 
-	private static ArrayList<String> createDummyReceipients() {
+	private static ArrayList<String> createDummyRecipients() {
 		final ArrayList<String> receipients = new ArrayList<>();
 		receipients.add("marco.seidler@init.de");
 		return receipients;
