@@ -21,7 +21,6 @@ public class TLSEmail {
 		this.delay = delay;
 	}
 
-	@SuppressWarnings("unused")
 	public void sendmails(final ArrayList<String> recipients) {
 
 		// create Authenticator object to pass in Session.getInstance argument
@@ -34,7 +33,7 @@ public class TLSEmail {
 		};
 
 		final Session session = Session.getInstance(PropertiesLoader.getProperties(), auth);
-		final int i = 1;
+		int i = 1;
 		final Random random = new Random();
 		for (final String recipient : recipients) {
 			try {
@@ -42,7 +41,7 @@ public class TLSEmail {
 				if (delay > 0) {
 					Thread.sleep(delay + getNewRandom(random, 100, 2000));
 				}
-				if (i % 10 == 0) {
+				if (++i % 10 == 0) {
 					System.out.println(i + "/" + recipient.length());
 				}
 			} catch (final Exception e) {
